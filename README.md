@@ -41,3 +41,8 @@ This is a project template to help me go faster when testing new models
 
 ##### 10 Layer GCN
 ![10 layer GNN](images/gcn-10-layers.png)
+
+
+#### Over Smoothing problem in GNNs
+
+![depth_diameter](images/depth_vs_diameter.png)
