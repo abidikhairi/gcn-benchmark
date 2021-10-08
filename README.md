@@ -28,7 +28,7 @@ This is a project template to help me go faster when testing new models
 #### Pubmed Dataset
 - Nodes: 19717 
 - Edges: 88651
-- Graph Diameter:
+- Graph Diameter: 3.7 ~ 4 (90-percentile effective diameter)
 - Node Features: 500
 - Num Classes: 3
 
