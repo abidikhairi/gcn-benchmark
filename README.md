@@ -46,3 +46,7 @@ This is a project template to help me go faster when testing new models
 #### Over Smoothing problem in GNNs
 
 ![depth_diameter](images/depth_vs_diameter.png)
+
+#### Feature transformation in GCN
+
+![features_tsne](images/cora_features.png)
