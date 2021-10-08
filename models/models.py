@@ -98,7 +98,7 @@ class GCNWithBlocks(nn.Module):
     def forward(self, graph, n_feats):
         x = n_feats
 
-        x = F.relu(self.postprocessing(x))
+        x = F.relu(self.preprocessing(x))
 
         for block in self.gcn:
             x = block(graph, x)
