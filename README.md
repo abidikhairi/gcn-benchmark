@@ -33,3 +33,11 @@ This is a project template to help me go faster when testing new models
 - Num Classes: 3
 
 <img src="./images/pubmed_train_loss.png" width="400"/>  <img src="./images/pubmed_test_loss.png" width="400"/> <img src="./images/pubmed_accuracy.png" width="400"/>
+
+#### What each node in GNN see with K layers
+
+##### 2 Layer GCN
+![2 layer GNN](images/gcn-2-layers.png)
+
+##### 10 Layer GCN
+![10 layer GNN](images/gcn-10-layers.png)
