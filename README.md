@@ -55,3 +55,10 @@ This is a project template to help me go faster when testing new models
 #### Feature transformation in GCN
 
 ![features_tsne](images/cora_features.png)
+
+### Block Based GCN Vs Flat GCN
+
+##### GNN Blocks Design
+![gnn_blocks](images/GNNBlocks.png) 
+
+![flat_vs_bloc_acc](images/flat_vs_block_acc.png) ![flat_vs_bloc_test_loss](images/flat_vs_block_test_loss.png)
