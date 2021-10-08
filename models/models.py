@@ -133,5 +133,7 @@ class GCNTransferLearning(nn.Module):
         for layer in self.feature:
             if isinstance(layer, GraphConv):
                 x = layer(graph, x)
+            else:
+                x = layer(x)
 
         return self.classifier(x)
