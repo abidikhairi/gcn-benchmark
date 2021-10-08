@@ -10,8 +10,7 @@ class GCN(nn.Module):
         self.gcn = nn.Sequential(
             GraphConv(in_feats=feature_size, out_feats=hidden_size, activation=nn.ReLU()),
             nn.Dropout(dropout_rate),
-            GraphConv(in_feats=hidden_size, out_feats=num_classes, activation=nn.ReLU()),
-            nn.Softmax(dim=1)
+            GraphConv(in_feats=hidden_size, out_feats=num_classes),
         )
 
     def forward(self, graph, n_feats):
