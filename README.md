@@ -16,9 +16,9 @@ This is a project template to help me go faster when testing new models
 ## Node Classification Test
 
 #### Cora Dataset
-- Nodes: 
-- Edges:
-- Graph Diameter:
+- Nodes: 2708
+- Edges: 10556
+- Graph Diameter: 20
 - Node Features: 1433
 - Num Classes: 7
 
@@ -26,8 +26,8 @@ This is a project template to help me go faster when testing new models
 
 
 #### Pubmed Dataset
-- Nodes: 
-- Edges:
+- Nodes: 19717 
+- Edges: 88651
 - Graph Diameter:
 - Node Features: 500
 - Num Classes: 3
