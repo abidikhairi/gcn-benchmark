@@ -45,7 +45,7 @@ def main():
 def train(gcn ,optimizer, cirterion, graph, mask):
     gcn.to(device)
     gcn.train()
-    for _ in range(30):
+    for _ in range(100):
         optimizer.zero_grad()
 
         n_feats = graph.ndata['feat'].to(device)
