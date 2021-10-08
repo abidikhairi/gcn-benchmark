@@ -106,3 +106,32 @@ class GCNWithBlocks(nn.Module):
         x = self.postprocessing(x)
 
         return x
+
+class GCNTransferLearning(nn.Module):
+    
+    def __init__(self, feature_size, hidden_size, num_classes, dropout_rate):
+        super(GCNTransferLearning, self).__init__()
+
+        self.projection = nn.Sequential(
+            nn.Linear(in_features=feature_size, out_features=hidden_size),
+            nn.Dropout(dropout_rate)
+        )
+
+        self.feature = nn.Sequential(
+            GraphConv(in_feats=hidden_size, out_feats=hidden_size, activation=nn.ReLU()),
+            nn.Dropout(dropout_rate),
+            GraphConv(in_feats=hidden_size, out_feats=hidden_size, activation=nn.ReLU())
+        )
+
+        self.classifier = nn.Sequential(
+            nn.Linear(in_features=hidden_size, out_features=num_classes)
+        )
+
+    def forward(self, graph, n_feats):
+        x = self.projection(n_feats)
+
+        for layer in self.feature:
+            if isinstance(layer, GraphConv):
+                x = layer(graph, x)
+
+        return self.classifier(x)
