@@ -1,6 +1,6 @@
 # Graph Convolution Networks Benchmarks
 
-In This project i tested gcn in a bunch ML Task
+In This project i tested gcn in a bunch of ML Tasks
 - Node Classification
 - The impact of GCN Depth/Width on accuracy
 - Apply Transfer Learning on Node Classification
@@ -65,3 +65,35 @@ In This project i tested gcn in a bunch ML Task
 ![gnn_blocks](images/GNNBlocks.png) 
 
 ![flat_vs_bloc_acc](images/flat_vs_block_acc.png) ![flat_vs_bloc_test_loss](images/flat_vs_block_test_loss.png)
+
+
+
+### References
+
+```
+@misc{kipf2017semisupervised,
+      title={Semi-Supervised Classification with Graph Convolutional Networks}, 
+      author={Thomas N. Kipf and Max Welling},
+      year={2017},
+      eprint={1609.02907},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+
+@misc{wandb,
+title = {Experiment Tracking with Weights and Biases},
+year = {2020},
+note = {Software available from wandb.com},
+url={https://www.wandb.com/},
+author = {Biewald, Lukas},
+}
+
+@misc{wang2020deep,
+      title={Deep Graph Library: A Graph-Centric, Highly-Performant Package for Graph Neural Networks}, 
+      author={Minjie Wang and Da Zheng and Zihao Ye and Quan Gan and Mufei Li and Xiang Song and Jinjing Zhou and Chao Ma and Lingfan Yu and Yu Gai and Tianjun Xiao and Tong He and George Karypis and Jinyang Li and Zheng Zhang},
+      year={2020},
+      eprint={1909.01315},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
+```
