@@ -1,7 +1,10 @@
-# Machine Learning Project Template
+# Graph Convolution Networks Benchmarks
 
-This is a project template to help me go faster when testing new models
-
+In This project i tested gcn in a bunch ML Task
+- Node Classification
+- The impact of GCN Depth/Width on accuracy
+- Apply Transfer Learning on Node Classification
+- Visualize K-hops neighbors in Graphs
 
 
 ### Project Requirements
