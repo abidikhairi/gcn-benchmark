@@ -147,6 +147,7 @@ class MLPPredictor(nn.Module):
             nn.Linear(in_features=2 * hidden_size, out_features=hidden_size),
             nn.ReLU(),
             nn.Dropout(dropout_rate),
+            nn.BatchNorm1d(num_features=hidden_size),
             nn.Linear(in_features=hidden_size, out_features=num_classes)
         )
 
@@ -171,6 +172,7 @@ class EdgeClassifier(nn.Module):
         self.features = nn.Sequential(
             GraphConv(in_feats=feature_size, out_feats=hidden_size, activation=nn.ReLU()),
             nn.Dropout(dropout_rate),
+            nn.BatchNorm1d(num_features=hidden_size),
             GraphConv(in_feats=hidden_size, out_feats=hidden_size)            
         )
 

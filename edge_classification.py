@@ -39,14 +39,14 @@ def main():
 
     model = EdgeClassifier(feature_size=1, hidden_size=64, mlp_hidden_size=64, num_classes=num_classes, dropout_rate=0.5)
     criterion = torch.nn.NLLLoss()
-    adam = torch.optim.Adam(model.parameters(), lr=1e-2)
+    adam = torch.optim.Adam(model.parameters(), lr=1e-3)
 
     wandb.watch(model)
 
     model.to(device)
     graph = graph.to(device)
 
-    for _ in range(20):
+    for _ in range(100):
         model.train()
         adam.zero_grad()
 
