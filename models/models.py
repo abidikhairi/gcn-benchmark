@@ -1,3 +1,4 @@
+import torch
 from torch import nn
 import torch.nn.functional as F
 from dgl.nn.pytorch import GraphConv
@@ -137,3 +138,54 @@ class GCNTransferLearning(nn.Module):
                 x = layer(x)
 
         return self.classifier(x)
+
+class MLPPredictor(nn.Module):
+    def __init__(self, hidden_size, num_classes, dropout_rate):
+        super(MLPPredictor, self).__init__()
+
+        self.predictor = nn.Sequential(
+            nn.Linear(in_features=2 * hidden_size, out_features=hidden_size),
+            nn.ReLU(),
+            nn.Dropout(dropout_rate),
+            nn.Linear(in_features=hidden_size, out_features=num_classes)
+        )
+
+    def apply_edges(self, edges):
+        h = torch.cat([edges.src['hn'], edges.dst['hn']], dim=1)
+
+        return {'scores': self.predictor(h)}
+
+    def forward(self, graph, h):
+        with graph.local_scope():
+            graph.ndata['hn'] = h
+
+            graph.apply_edges(self.apply_edges)
+
+            return graph.edata['scores']
+
+class EdgeClassifier(nn.Module):
+    
+    def __init__(self, feature_size, hidden_size, mlp_hidden_size, num_classes, dropout_rate = 0.5):
+        super(EdgeClassifier, self).__init__()
+
+        self.features = nn.Sequential(
+            GraphConv(in_feats=feature_size, out_feats=hidden_size, activation=nn.ReLU()),
+            nn.Dropout(dropout_rate),
+            GraphConv(in_feats=hidden_size, out_feats=hidden_size)            
+        )
+
+        self.predictor =  MLPPredictor(hidden_size=mlp_hidden_size, num_classes=num_classes, dropout_rate=dropout_rate)
+
+
+    def forward(self, graph, n_feats):
+        x = n_feats
+
+        for layer in self.features:
+            if isinstance(layer, GraphConv):
+                x = layer(graph, x)
+            else:
+                x = layer(x)
+        
+        scores = self.predictor(graph, x)
+
+        return F.log_softmax(scores, dim=1)
